@@ -5,7 +5,6 @@ import {
   magenta,
   red,
 } from 'https://deno.land/std@0.53.0/fmt/colors.ts';
-import { Context } from 'https://deno.land/x/oak@v6.3.1/context.ts';
 
 import log from '../utilities/log.ts';
 
@@ -15,10 +14,7 @@ import log from '../utilities/log.ts';
  * @param {*} next - call the next middleware
  * @returns {Promise<void>}
  */
-export default async (
-  ctx: Context,
-  next: () => void,
-): Promise<void> => {
+export default async function (ctx: any, next: () => void): Promise<void> {
   await next();
   const responseTime = ctx.response.headers.get('X-Response-Time');
   const { response: { status = 200 } = {} } = ctx;

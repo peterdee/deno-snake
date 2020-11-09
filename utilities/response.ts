@@ -1,6 +1,4 @@
-import { Context, Status } from 'https://deno.land/x/oak/mod.ts';
-
-import { Response } from './types.ts';
+import type { Response } from './types.ts';
 
 export type { Response };
 
@@ -14,8 +12,8 @@ export type { Response };
  * @returns {Response} 
  */
 export default (
-  ctx: Context,
-  status = Status.OK,
+  ctx: any,
+  status = 200,
   info = 'OK',
   data: any = null,
   misc = 'NO_ADDITIONAL_INFORMATION',

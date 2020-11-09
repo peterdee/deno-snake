@@ -2,6 +2,12 @@ import 'https://deno.land/x/denv/mod.ts';
 
 export const environment = Deno.env.toObject();
 
+// Database connection
+export const {
+  DATABASE_CONNECTION_STRING = '',
+  DATABASE_NAME = '',
+} = environment;
+
 // Available application environemnts
 export const ENVS = {
   development: 'development',
