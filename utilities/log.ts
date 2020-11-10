@@ -1,6 +1,8 @@
 import { green, red } from 'https://deno.land/std@0.53.0/fmt/colors.ts';
 
-import { ENV, ENVS } from '../configuration/index.ts';
+import Configuration, { ENVS } from '../configuration/index.ts';
+
+const config = Configuration.config();
 
 /**
  * Log the text and data
@@ -15,7 +17,7 @@ export default (
   isError= false,
 ): void => {
   const color = isError ? red : green;
-  if (ENV === ENVS.development) {
+  if (config.ENV === ENVS.development) {
     return console.log(color(`${text} ${data || ''}`));
   }
 }

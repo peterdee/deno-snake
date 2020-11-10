@@ -1,7 +1,8 @@
 import { RouterContext } from 'https://deno.land/x/oak/mod.ts';
 
-import { collections, database } from '../../database/index.ts';
+import { database, collections, Score } from '../../database/index.ts';
 import response, { Response } from '../../utilities/response.ts';
+import { RESPONSE_STATUSES, RESPONSE_MESSAGES } from '../../configuration/index.ts';
 
 /**
  * Publish a highscore
@@ -11,24 +12,38 @@ import response, { Response } from '../../utilities/response.ts';
 export default async function (ctx: RouterContext): Promise<Response|any> {
   try {
     // create a Score record
-    const Score = database.collection(collections.Score);
+    const Score = database.collection<Score>(collections.Score);
     const now = `${Date.now()}`;
     await Score.insertOne({
       name: 'test',
-      score: 1,
+      score: 3,
       created: now,
       updated: now,
     });
 
-    const results = await Score.find({});
+    // load 10 highscores
+    const results = await Score.aggregate([
+      {
+        $sort: {
+          score: -1,
+        },
+      },
+      {
+        $limit: 10,
+      },
+    ]);
 
-    return response(ctx, 200, 'OK', results);
-  } catch (error) {
-    console.log(error);
     return response(
       ctx,
-      500,
-      'INTERNAL_SERVER_ERROR',
+      RESPONSE_STATUSES.ok,
+      RESPONSE_MESSAGES.ok,
+      results,
+    );
+  } catch (error) {
+    return response(
+      ctx,
+      RESPONSE_STATUSES.internalServerError,
+      RESPONSE_MESSAGES.internalServerError,
     );
   }
 }
