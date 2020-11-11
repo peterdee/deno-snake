@@ -1,9 +1,5 @@
 import { RouterContext } from "https://deno.land/x/oak@v6.3.2/router.ts";
 
-export interface Body {
-  [key: string]: number | string;
-}
-
 /**
  * Parse request body
  * @param {RouterContext} ctx - context
