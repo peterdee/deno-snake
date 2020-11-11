@@ -38,6 +38,7 @@ class Configuration {
 export const RESPONSE_STATUSES = {
   badRequest: 400,
   internalServerError: 500,
+  noContent: 201,
   notAuthorized: 401,
   notFound: 404,
   ok: 200,
@@ -46,6 +47,8 @@ export const RESPONSE_STATUSES = {
 // Response messages
 export const RESPONSE_MESSAGES = {
   internalServerError: 'INTERNAL_SERVER_ERROR',
+  invalidData: 'INVALID_DATA',
+  missingData: 'MISSING_DATA',
   noAdditionalInformation: 'NO_ADDITIONAL_INFORMATION',
   ok: 'OK',
 };

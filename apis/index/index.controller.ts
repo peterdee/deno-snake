@@ -7,6 +7,6 @@ import response, { Response } from '../../utilities/response.ts';
  * @param {RouterContext} ctx - Oak Context
  * @returns {Promise<Response|*>}
  */
-export default async function (ctx: RouterContext): Promise<Response|any> {
+export default async function (ctx: RouterContext): Promise<Response | any> {
   return response(ctx);
 };

@@ -1,4 +1,4 @@
-import { RouterContext } from 'https://deno.land/x/oak/mod.ts';
+import { Context, RouterContext } from 'https://deno.land/x/oak/mod.ts';
 
 import { RESPONSE_STATUSES, RESPONSE_MESSAGES } from '../configuration/index.ts';
 import type { Response } from './types.ts';
@@ -7,7 +7,7 @@ export type { Response };
 
 /**
  * Send response to the frontend
- * @param {RouterContext} ctx - context
+ * @param {Context|RouterContext} ctx - context
  * @param {number} status - response status
  * @param {string} info - response info
  * @param {*} data - data object (optional)
@@ -15,7 +15,7 @@ export type { Response };
  * @returns {Response} 
  */
 export default (
-  ctx: RouterContext,
+  ctx: Context | RouterContext,
   status = RESPONSE_STATUSES.ok,
   info = RESPONSE_MESSAGES.ok,
   data: any = null,

@@ -9,7 +9,7 @@ import { RESPONSE_STATUSES, RESPONSE_MESSAGES } from '../../configuration/index.
  * @param {RouterContext} ctx - context
  * @returns {Promise<Response|*>}
  */
-export default async function (ctx: RouterContext): Promise<Response|any> {
+export default async function (ctx: RouterContext): Promise<Response | any> {
   try {
     // get Score records
     const Score = database.collection<Score>(collections.Score);

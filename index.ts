@@ -7,6 +7,7 @@ import { Application, Context } from 'https://deno.land/x/oak/mod.ts';
 import { oakCors as cors } from 'https://deno.land/x/cors/mod.ts';
 import { Snelm } from 'https://deno.land/x/snelm/mod.ts';
 
+import favicon from './middlewares/favicon.ts';
 import log from './utilities/log.ts';
 import logger from './middlewares/logger.ts';
 import responseTime from './middlewares/response-time.ts';
@@ -22,6 +23,7 @@ const helmet = new Snelm('oak');
 
 // middlewares
 app.use(cors());
+app.use(favicon);
 app.use((ctx: Context, next: () => Promise<void>): Promise<void> => {
   ctx.response = helmet.snelm(ctx.request, ctx.response);
   return next();
