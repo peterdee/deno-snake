@@ -29,12 +29,21 @@ export default async function (ctx: RouterContext): Promise<Response | any> {
       );
     }
 
+    // check score value
+    if (Number(body.score) > 2500) {
+      return response(
+        ctx,
+        RESPONSE_STATUSES.badRequest,
+        RESPONSE_MESSAGES.invalidData,
+      );
+    }
+
     // create a Score record
     const Score = database.collection<Score>(collections.Score);
     const now = `${Date.now()}`;
     await Score.insertOne({
       name: body.name,
-      score: body.score,
+      score: Number(body.score),
       created: now,
       updated: now,
     });

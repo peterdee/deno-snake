@@ -28,7 +28,16 @@ export default async function (ctx: RouterContext): Promise<Response | any> {
       );
     }
 
-    // Get a Score record that skips the first 9
+    // check score value
+    if (Number(query.score) > 2500) {
+      return response(
+        ctx,
+        RESPONSE_STATUSES.badRequest,
+        RESPONSE_MESSAGES.invalidData,
+      );
+    }
+
+    // get a Score record that skips the first 9
     const Score = database.collection<Score>(collections.Score);
     const [result] = await Score.aggregate([
       {
