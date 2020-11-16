@@ -31,6 +31,6 @@ bash run.sh
 
 ### Heroku
 
-The `stage` branch is auto-deployed to Heroku
+Application is deployed to Heroku manually via the Heroku CLI
 
 See [this](https://github.com/chibat/heroku-deno-getting-started) for details regarding the Heroku Buildpack
