@@ -6,6 +6,10 @@ Stack: [Deno](https://deno.land), [Oak](https://github.com/oakserver/oak), [Mong
 
 DEV: http://localhost:7111
 
+STAGE: https://deno-snake.herokuapp.com
+
+Frontend endpoint: https://js-snake-jquery.herokuapp.com
+
 ### Deploy
 
 `Deno` v1.5.2 was used during the development.
@@ -24,3 +28,9 @@ The `.env` file is required. See the [.env.example](.env.example) file for detai
 ```shell script
 bash run.sh
 ```
+
+### Heroku
+
+The `stage` branch is auto-deployed to Heroku
+
+See [this](https://github.com/chibat/heroku-deno-getting-started) for details regarding the Heroku Buildpack
